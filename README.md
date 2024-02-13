@@ -2,6 +2,7 @@
 ![1700658231950](https://github.com/FaithGitau/Tanzania_Water_Wells/assets/144773775/39720c07-079d-4127-a7f0-840352870964)
 
 # OVERVIEW
+
 The Tanzanian government, foreign donor organizations, churches and faith-based organizations, and even the villagers have all been involved in funding and installation of wells. Some of the installed wells however cease to function over time while others remain in dilapidated conditions needing repair.
 
 For this project i'll be working as a Data scientist along an NGO alligned towards provision of water among communities in Tanzania. I'm to analyse existing data within the Tanzanian water ministry and create a model that will guide us on the functionality estimated life span of wells in different regions and varying conditions.
@@ -19,23 +20,26 @@ ML ALGORITHM used
 # WORKFLOW
 
 1. **Data preparation**
-Imported the necessary packages
-Loading the training-set-values dataset as downloaded
-Checked for the general data shape
-Concatenating the training and testing data sets.
-Checking for duplicates in the dataset.
-Checking and handling missing values in our dataset.
-Feature engineering.
-Dropping columns that are of low impact to model outcome.
+
++ Imported the necessary packages
++ Loading the training-set-values dataset as downloaded
++ Checked for the general data shape
++ Concatenating the training and testing data sets.
++ Checking for duplicates in the dataset.
++ Checking and handling missing values in our dataset.
++ Feature engineering.
++ Dropping columns that are of low impact to model outcome.
 
 3. **Data analysis & visualization**
+
 Conducted concurrent analysis and visualization, i'm trying to show the relationship between different columns in our dataset.E.g relationship between the ['funder'& 'region']. Displayed the relationship between the numerical data E.g ['amount_tsh', 'gps_height', 'population', 'age_of_well']
 
 4. **Modelling**
+
 We'll first identify the categorical and numerical columns for ease of one hot encoding to allow easy fitting to different models.
 
-categorical data _columns = ['funder','basin','region', 'public_meeting', 'permit', 'extraction_type_group','management','payment_type','water_quality', 'quantity','source','waterpoint_type_group']
-numerical data_columns = ['amount_tsh', 'gps_height', 'population', 'age_of_well']
++ categorical data _columns = ['funder','basin','region', 'public_meeting', 'permit', 'extraction_type_group','management','payment_type','water_quality', 'quantity','source','waterpoint_type_group']
++ numerical data_columns = ['amount_tsh', 'gps_height', 'population', 'age_of_well']
 After encoding our data results into (56991, 106) shape, 56991 rows, 106 columns. I then split the data before we carry out any further transformations to prevent data leakage. For the purposes of splitting, we'll use the test_size 0.25 and random_state 42
 
 a) We'll start by fitting a dummy classifier somewhat equal to guessing as a baseline model that we can how the rest of our models perform with.
