@@ -19,7 +19,7 @@ ML ALGORITHM used
     Scikit_learn: Modelling
 # WORKFLOW
 
-1. **Data preparation**
+# 1. Data preparation
 
 + Imported the necessary packages
 + Loading the training-set-values dataset as downloaded
@@ -30,11 +30,11 @@ ML ALGORITHM used
 + Feature engineering.
 + Dropping columns that are of low impact to model outcome.
 
-3. **Data analysis & visualization**
+# 2. Data analysis & visualization
 
 Conducted concurrent analysis and visualization, i'm trying to show the relationship between different columns in our dataset.E.g relationship between the ['funder'& 'region']. Displayed the relationship between the numerical data E.g ['amount_tsh', 'gps_height', 'population', 'age_of_well']
 
-4. **Modelling**
+# 3. Modelling
 
 We'll first identify the categorical and numerical columns for ease of one hot encoding to allow easy fitting to different models.
 
