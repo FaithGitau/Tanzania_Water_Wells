@@ -43,42 +43,42 @@ We'll first identify the categorical and numerical columns for ease of one hot e
 After encoding our data results into (56991, 106) shape, 56991 rows, 106 columns. I then split the data before we carry out any further transformations to prevent data leakage. For the purposes of splitting, we'll use the test_size 0.25 and random_state 42
 
 #### a) We'll start by fitting a dummy classifier somewhat equal to guessing as a baseline model that we can how the rest of our models perform with.
-Our dummy model has an accuracy score of 0.448 which means it makes correct predictions 44% of the times. This is worse than random guessing.
+    Our dummy model has an accuracy score of 0.448 which means it makes correct predictions 44% of the times. This is worse than random guessing.
 
 #### b) Simple Logistic Regression Model
-Our simple logistic regression model has an accuracy of 0.738. This means that it is predicting correctly 73% of the time. This is not bad for a vanilla model without any tuning.
+    Our simple logistic regression model has an accuracy of 0.738. This means that it is predicting correctly 73% of the time. This is not bad for a vanilla model without any tuning.
 
 #### c) We'll tune the Logistic regression further by adding an intercept and setting a high regularization parameter to see how it will perform
-Logistic Tuned Training Accuracy:  0.7364714690124698
-Logistic Tuned Validation Accuracy:  0.7344890510948905
-Even with the tuning, our accuracy has remained constant and although the model has registered slight improvement in its ability to classify functional wells that need repair, it is still not very good.
+    Logistic Tuned Training Accuracy:  0.7364714690124698
+    Logistic Tuned Validation Accuracy:  0.7344890510948905
+    Even with the tuning, our accuracy has remained constant and although the model has registered slight improvement in its ability to classify functional wells that need repair, it is still not very good.
 
 #### d) DecisionTreeClassifier
-CLF Baseline Training Accuracy:  0.9482020447792621
-CLF Baseline Validation Accuracy:  0.7489472206625492
-This model has a training accuracy of 0.81 and a validation accuracy of 0.74.
+    CLF Baseline Training Accuracy:  0.9482020447792621
+    CLF Baseline Validation Accuracy:  0.7489472206625492
+    This model has a training accuracy of 0.81 and a validation accuracy of 0.74.
 
 #### e) We are going to make use of GridSearchCV to find an optimal combination of parameters that we can use to tune the model.
-CLF Tuned Training Accuracy:  0.8159698664108743
-CLF Tuned Validation Accuracy:  0.7606681639528355
-Tuning our model has slightly improved it. While training accuracy remains 0.81, validation accuracy has come up to 0.76. The closeness of the two values suggests the model is not overfitting.
+    CLF Tuned Training Accuracy:  0.8159698664108743
+    CLF Tuned Validation Accuracy:  0.7606681639528355
+    Tuning our model has slightly improved it. While training accuracy remains 0.81, validation accuracy has come up to 0.76. The closeness of the two values suggests the model is not overfitting.
 
 #### f) KNeighborsClassifier
-KNN Training Accuracy:  0.812834850150902
-KNN Validation Accuracy:  0.7501403705783268
-One of the ways of tuning a KNN model is by iterating through various values of K to find the value that gives the best results. We will make use of grid search to iterate through several values of k to find an optimal value of k that we can use to tune the model.
+    KNN Training Accuracy:  0.812834850150902
+    KNN Validation Accuracy:  0.7501403705783268
+    One of the ways of tuning a KNN model is by iterating through various values of K to find the value that gives the best results. We will make use of grid search to iterate through several values of k to find an optimal value of k that we can use to tune the model.
 
 #### g) Bagged Tree and Random Forest Models
-Forest Training Accuracy:  0.68689609994619
-Forest Validation Accuracy:  0.6843767546322291
-While bagged tress and random forests have not registered the highest accuracy scores, they are so far the ones with the most consistent performance in both the training and test sets.
+    Forest Training Accuracy:  0.68689609994619
+    Forest Validation Accuracy:  0.6843767546322291
+    While bagged tress and random forests have not registered the highest accuracy scores, they are so far the ones with the most consistent performance in both the training and test sets.
 
-We will use GridSearchCV to find optimal values to tune the parameters.
-Refitting the model with the best parameters identified by GridSearchCV
+    We will use GridSearchCV to find optimal values to tune the parameters.
+    Refitting the model with the best parameters identified by GridSearchCV
     tuned_forest = RandomForestClassifier(bootstrap=True, criterion='entropy', max_depth=20, min_impurity_split=0.1)
     tuned_forest.fit(X_train_scaled, y_train)
-Tuned Forest Training Accuracy:  0.8968018155019535
-Tuned Forest Validation Accuracy:  0.7911285794497473
+    Tuned Forest Training Accuracy:  0.8968018155019535
+    Tuned Forest Validation Accuracy:  0.7911285794497473
 
 ## FINAL MODEL AND CONCLUSION.
 Final Model Of all the models tested, the tuned random forest model has given the best results at a training accuracy of 0.89 and a test accuracy of 0.79. We'll tune it a little further in this section and then present it as our final predictive model.
